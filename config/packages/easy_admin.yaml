@@ -1,0 +1,32 @@
+easy_admin:
+    site_name: '深圳市慢性病防治中心工号管理系统'
+    entities:
+        # List the entity class name you want to manage
+        Staff:
+            label: '员工列表'
+            class: App\Entity\Staff
+            list:
+                filters: ['name', 'Department']
+                max_results: 100
+                fields:
+                    - id
+                    - { property: 'name', label: '姓名'}
+                    - { property: 'sex', label: '性别'}
+                    - { property: 'tel',label: '电话', type: 'tel' }
+                    - { property: 'Department', label: '科室'}
+                    - { property: 'jobnumber', label: '工号'}
+            form:  # <-- 'form' is applied to both 'new' and 'edit' views
+                fields:
+                    - { property: 'name', label: '姓名', help: '必填' }
+                    - { property: 'sex', label: '性别', help: '选填'}
+                    - { property: 'tel',label: '电话', type: 'tel',help: '选填' }
+                    - { property: 'Department', label: '科室', help: '选填'}
+                    - { property: 'jobnumber', label: '工号', help: '必填'}
+        Department:
+            label: '部门列表'
+            class: App\Entity\Department
+            list:
+                max_results: 100
+                fields:
+                    - id
+                    - { property: 'name', label: '科室名称'}
